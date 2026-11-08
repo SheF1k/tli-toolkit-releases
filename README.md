@@ -30,7 +30,7 @@ with `Get-FileHash .\TLI-Toolkit-<version>.exe`.
 
 ## First steps
 
-1. **Turn on the game's log:** in Torchlight: Infinite, open **Settings → Other** and tick **Enable Log**. The game
+1. **Turn on the game's log:** in Torchlight: Infinite, press **Esc → Settings → Other** and, under **Account Related**, turn on **Enable Log**. The game
    switches it off every time it starts, so turn it on again after each launch.
 2. **Relog** (back to character selection and in again), so the game writes your character and bag to the log.
 3. **Sort your bag once**, so the tracker knows every stack you're carrying.
