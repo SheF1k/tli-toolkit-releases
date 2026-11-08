@@ -4,7 +4,7 @@ An all-in-one companion app for **Torchlight: Infinite**: a farming tracker, min
 highlights, calculators and guides, and a small always-on-top window you keep over the game.
 
 **[Download the latest version](https://github.com/SheF1k/tli-toolkit-releases/releases/latest)** (Windows) ·
-**[Website, guides and FAQ](https://tli-toolkit.tli-community-server.workers.dev)**
+**[Website, guides and FAQ](https://tlitoolkit.com)**
 
 ## What it does
 
@@ -91,7 +91,7 @@ TLI Toolkit is a fan-made tool. It is not affiliated with or endorsed by the mak
 ## Reporting bugs
 
 Found a bug or have an idea? Press **Ctrl+Alt+B** in the app to put together a report, or
-[open an issue](https://github.com/SheF1k/tli-toolkit-releases/issues) and include:
+[open an issue](https://github.com/SheF1k/tli-toolkit-releases/issues) (or email [hello@tlitoolkit.com](mailto:hello@tlitoolkit.com)) and include:
 
 - the version you're running (Settings → About, or the exe's file name),
 - what you did, what you expected and what happened instead,
