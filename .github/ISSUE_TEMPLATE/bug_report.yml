@@ -1,0 +1,60 @@
+name: Bug report
+description: Something in TLI Toolkit doesn't work as it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. Tip: in the app, **Ctrl+Alt+B** puts most of this together for you, including the
+        app's error log. Please don't paste anything you'd rather keep private: the game's log contains your character
+        name.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Settings → About, or the exe's file name (for example 0.1.0-beta.7).
+      placeholder: 0.1.0-beta.7
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      options:
+        - Farming tracker (maps, drops, FE per hour)
+        - Vorax advisor
+        - Tartarus Prison advisor
+        - Arcana, Mistville or Void Sea advisor
+        - Screen reading or on-game highlights
+        - Mini window
+        - Prices or Trade House
+        - Strategies or Community
+        - Updates
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen again
+      placeholder: |
+        1. Open …
+        2. Click …
+  - type: input
+    id: screen
+    attributes:
+      label: Screen and Windows
+      description: Resolution, Windows display scale and fullscreen or windowed. Helps a lot for screen reading and highlights.
+      placeholder: 5120×1440, 100%, fullscreen, Windows 11
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots, saved frames or log lines
+      description: Drag files here. For screen reading, use **Save frame** in the read strip and attach the file.

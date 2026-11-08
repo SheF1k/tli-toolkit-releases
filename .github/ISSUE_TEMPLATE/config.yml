@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Guides and FAQ
+    url: https://tlitoolkit.com
+    about: How the tracker and the advisors work, and answers to common questions.
+  - name: Email
+    url: mailto:hello@tlitoolkit.com
+    about: For anything you'd rather not post in public.

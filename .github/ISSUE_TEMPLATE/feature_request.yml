@@ -1,0 +1,16 @@
+name: Idea or request
+description: Something you'd like TLI Toolkit to do
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+      description: What you're trying to do in the game, and how the app could help.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: How do you do it today?
+      description: Another tool, a spreadsheet, by hand… Links and screenshots welcome.
