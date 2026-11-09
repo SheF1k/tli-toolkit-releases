@@ -62,7 +62,19 @@ or click and type for you: every move is still yours. It is an unofficial tool, 
 TLI Toolkit is closed source. This repository only hosts the downloads, the release notes and the bug reports.
 
 **What goes online?**
-The price feed, the update check, and the release notes. Nothing about you or your runs is sent.
+The price feed, the update check, the release notes and the patch status
+([tlitoolkit.com/status.json](https://tlitoolkit.com/status.json): which parts of the app work with the current game
+patch, also on [tlitoolkit.com/status](https://tlitoolkit.com/status)). Nothing about you or your runs is sent with them.
+
+Only if you turn it on (Settings → Community), and asked once, never on by default:
+- **Share my runs:** finished maps, anonymously, for the community farming tables on the website (zone, time, what
+  dropped and what opening it cost, your Pactspirits and Void Chart), plus a once-a-day check-in that a copy is running
+  (version and language only).
+- **Share minigame runs:** your Vorax and Tartarus decisions (the boards, the advice shown, your pick, the result), to
+  improve the advisors.
+
+Both use a random id, never your character or account name; **See exactly what's sent** shows it, and **Delete my
+data** removes it. Details: [Safety & privacy](https://tlitoolkit.com/about).
 
 **Where do the prices come from?**
 Community prices from [tlicompanion.com](https://tlicompanion.com), plus the prices you look up on the in-game
