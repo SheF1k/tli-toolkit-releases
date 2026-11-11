@@ -31,6 +31,9 @@ highlights, calculators and guides, and a small always-on-top window you keep ov
    version is out (or Settings → Updates; pick **Beta** there for test builds). It checks the download against the
    SHA-256 published with the release and keeps the old exe until the new one starts.
 
+**On 0.1.0-beta.11 or older?** Its update button can't install the new version. Quit TLI Toolkit from the tray
+(right-click its icon → Quit), then open the new exe you downloaded.
+
 Windows 10 or 11 (64-bit) only. Keep the exe somewhere other than OneDrive, Program Files or a zip you opened: updates
 can't replace it there.
 
@@ -40,19 +43,20 @@ with `Get-FileHash .\TLI-Toolkit-<version>.exe`.
 
 ## First steps
 
-1. **Turn on the game's log:** in Torchlight: Infinite, press **Esc → Settings → Other** and, under **Account Related**, turn on **Enable Log**. The game
-   switches it off every time it starts, so turn it on again after each launch.
+1. **Press Enable Log in the game:** in Torchlight: Infinite, press **Esc → Settings → Other** and, under **Account Related**, press the
+   **Enable Log** button. The game turns logging off every time it starts, so press it again after each launch.
 2. **Relog** (back to character selection and in again), so the game writes your character and bag to the log.
 3. **Sort your bag once**, so the tracker knows every stack you're carrying.
-4. **Start TLI Toolkit.** It finds the log by itself (Steam, the launcher or TapTap); the Setup check tells you if
-   something is off.
+4. **Start TLI Toolkit.** It finds the log by itself (Steam, the launcher or TapTap): the top bar says **Game log
+   connected**, and the **Get tracking** card ticks off **Game logging is on** once Enable Log worked. The Setup check
+   tells you if something is off.
 
 Now farm as usual: every map shows up on the **Overview**. When you open a minigame, the app switches to its advisor.
 
 ## FAQ
 
 **Is it safe? Can I get banned?**
-TLI Toolkit reads the game's log file (which the game writes itself once you enable it). To find it, it looks in the
+TLI Toolkit reads the game's log file (which the game writes itself once you press Enable Log). To find it, it looks in the
 game's install folders. For the on-game highlights it asks Windows where the game window is, and for screen reading it
 captures **only the game window**, only while an advisor's Auto-read is on (or you press Read now), and reads it on
 your PC: pictures are never saved or sent. It does not read or change the game's memory, inject anything into the game,
@@ -96,7 +100,7 @@ TLI Toolkit stands on the work of others:
 - **[Tyrayla/TLIBuilder](https://github.com/Tyrayla/TLIBuilder)** (MIT): the log's character and Pactspirit layout.
 - **[tesseract.js](https://github.com/naptha/tesseract.js)** (Apache 2.0): text reading for the screen reader.
 - **[tidewarden/vorax-solver](https://github.com/tidewarden/vorax-solver)**: the reference for Vorax rules and odds.
-- **[tlicompanion.com](https://tlicompanion.com)**: community prices. **[tlidb.com](https://tlidb.com)**: item icons.
+- **[tlicompanion.com](https://tlicompanion.com)**: community prices. **[tlidb.com](https://tlidb.com)**: item icons (fan-made, not affiliated with XD). Game art © XD.
 
 TLI Toolkit is a fan-made tool. It is not affiliated with or endorsed by the makers of Torchlight: Infinite.
 
