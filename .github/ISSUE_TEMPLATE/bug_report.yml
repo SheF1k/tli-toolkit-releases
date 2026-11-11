@@ -1,60 +1,58 @@
 name: Bug report
 description: Something in TLI Toolkit doesn't work as it should
-labels: [bug]
+title: "[Bug] "
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time. Tip: in the app, **Ctrl+Alt+B** puts most of this together for you, including the
-        app's error log. Please don't paste anything you'd rather keep private: the game's log contains your character
-        name.
+        Thanks for reporting. The easiest way: in the app, open **Settings → About → Report a bug**. It opens this form with the version, Windows version, language and diagnostics boxes already filled in. Nothing is sent until you press **Submit new issue** here.
+
+        Please do not paste character names, account ids or IP addresses. The diagnostics report already has your user folder taken out.
   - type: input
     id: version
     attributes:
-      label: Version
-      description: Settings → About, or the exe's file name (for example 0.1.0-beta.7).
-      placeholder: 0.1.0-beta.7
+      label: App version
+      description: Settings → About, next to the name (for example 0.1.0-beta.25).
+      placeholder: "0.1.0-beta.25"
     validations:
       required: true
-  - type: dropdown
-    id: area
+  - type: input
+    id: windows
     attributes:
-      label: Where
-      options:
-        - Farming tracker (maps, drops, FE per hour)
-        - Vorax advisor
-        - Tartarus Prison advisor
-        - Arcana, Mistville or Void Sea advisor
-        - Screen reading or on-game highlights
-        - Mini window
-        - Prices or Trade House
-        - Strategies or Community
-        - Updates
-        - Something else
-    validations:
-      required: true
+      label: Windows version
+      description: Filled in by the app. By hand, press Win+R and run winver.
+      placeholder: "win32 x64 (10.0.22631)"
+  - type: input
+    id: language
+    attributes:
+      label: App language
+      placeholder: "en"
   - type: textarea
-    id: what
+    id: what-happened
     attributes:
       label: What happened
-      description: What you did, what you expected, and what happened instead.
+      description: What you did, and what you saw instead.
     validations:
       required: true
   - type: textarea
-    id: steps
+    id: expected
     attributes:
-      label: How to make it happen again
-      placeholder: |
-        1. Open …
-        2. Click …
-  - type: input
-    id: screen
-    attributes:
-      label: Screen and Windows
-      description: Resolution, Windows display scale and fullscreen or windowed. Helps a lot for screen reading and highlights.
-      placeholder: 5120×1440, 100%, fullscreen, Windows 11
+      label: What you expected
+    validations:
+      required: false
   - type: textarea
-    id: extra
+    id: diagnostics
     attributes:
-      label: Screenshots, saved frames or log lines
-      description: Drag files here. For screen reading, use **Save frame** in the read strip and attach the file.
+      label: Diagnostics report
+      description: Settings → About → Diagnostics → Copy report. Filled in by Report a bug (cut if it was long: paste the rest from Copy report).
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: frames
+    attributes:
+      label: Screenshots or frames (optional)
+      description: For a screen-reading problem, drag the saved frame (Save frame in the advisor) or a screenshot of the game here. A frame may show your screen: crop out anything private.
+    validations:
+      required: false
