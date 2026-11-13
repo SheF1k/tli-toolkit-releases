@@ -10,12 +10,13 @@ highlights, calculators and guides, and a small always-on-top window you keep ov
 
 - **Farming tracker.** Reads the game's log to track every map: what dropped (with item icons), what opening the map
   cost, your profit and your **FE per hour** (real time and in maps, after tax if you like), valued with live
-  community prices. Charts, your bag's value with price trends, results per map, per day and per season, Auction
-  House sales, crafting and Memory Revival costs, and Vorax, Tartarus, Sandlord and Void Sea runs on their own rows.
-  Pause, continue a session, and compare your setups (compasses, Pactspirits, Void Chart) in **Strategies**.
+  community prices. Charts, your bag's value with price trends, a bag scan that says what to sell, keep or hold,
+  results and deaths per map, per day and per season, Trade House sales, crafting and Memory Revival costs, and
+  Vorax, Tartarus, Sandlord and Void Sea runs on their own rows. Pause or continue a session, import older game logs
+  into History, and compare your setups (compasses, Pactspirits, Void Chart) in **Strategies**.
 - **Minigame advisors:** Vorax, Tartarus Prison, Arcana, Mistville and Void Sea. They play your options out thousands
   of times and show the best move, ringed directly over the game. Vorax and Tartarus can **read the board from the
-  game window** (new, being tested), so there's less to type.
+  game window**, so there's less to type.
 - **Mini window.** A small always-on-top widget you drag over the game and resize: live FE/hour, session stats, the
   current map, the latest drops, and the move to make in minigames. Click-through lock, timers, and an OBS source.
 - **Calculators and guides:** Memory Revival, Cube Greed, TOWER Sequence, crafting vs buying, the Divinity board, a
