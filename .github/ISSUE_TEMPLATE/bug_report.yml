@@ -1,58 +1,161 @@
-name: Bug report
-description: Something in TLI Toolkit doesn't work as it should
+name: Bug report / 问题反馈
+description: Something in TLI Toolkit doesn't work as it should / TLI Toolkit 出了问题
 title: "[Bug] "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting. The easiest way: in the app, open **Settings → About → Report a bug**. It opens this form with the version, Windows version, language and diagnostics boxes already filled in. Nothing is sent until you press **Submit new issue** here.
+        Thanks for reporting. / 感谢反馈。
 
-        Please do not paste character names, account ids or IP addresses. The diagnostics report already has your user folder taken out.
+        The easiest way: in the app, open **Settings → About → Report a bug**. It opens this form with everything the app can know already filled in (marked "filled in by the app" below). Nothing is sent until you press **Submit new issue** here.
+        最简单的方式：在应用中打开 **设置 → 关于 → Report a bug**，表单会自动填好应用能获取的信息。点击 **Submit new issue** 之前不会发送任何内容。
+
+        **Screenshots: wait until every image has finished uploading (no "Uploading..." text left) before you press Submit.** A failed upload leaves a broken link. / 截图请等上传完成后再提交。
+
+        Please do not paste character names, account ids or IP addresses. / 请勿粘贴角色名、账号 ID 或 IP 地址。
   - type: input
     id: version
     attributes:
-      label: App version
-      description: Settings → About, next to the name (for example 0.1.0-beta.25).
+      label: App version / 应用版本
+      description: Filled in by the app. By hand: Settings → About (for example 0.1.0-beta.25).
       placeholder: "0.1.0-beta.25"
     validations:
       required: true
-  - type: input
-    id: windows
+  - type: dropdown
+    id: part
     attributes:
-      label: Windows version
-      description: Filled in by the app. By hand, press Win+R and run winver.
-      placeholder: "win32 x64 (10.0.22631)"
-  - type: input
-    id: language
+      label: Which part / 哪个功能
+      options:
+        - Farming tracker / 刷图统计
+        - Vorax
+        - Tartarus / 塔塔洛斯监狱
+        - TOWER / 塔
+        - Other minigame / 其他小游戏
+        - Overlay or rings on the game / 游戏上的覆盖层或高亮圈
+        - Mini window / 迷你窗口
+        - Prices or community / 价格或社区
+        - Updater or install / 更新或安装
+        - Website / 网站
+        - Other / 其他
+    validations:
+      required: true
+  - type: dropdown
+    id: tracker-works
     attributes:
-      label: App language
-      placeholder: "en"
+      label: Does the farming tracker work? / 刷图统计是否正常？
+      description: Does it show your maps and drops while you play?
+      options:
+        - Yes, it works / 正常
+        - Partly (some maps or drops missing) / 部分正常
+        - No, it shows nothing / 不工作
+        - Don't know / 不知道
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened
+      label: What happened / 发生了什么
       description: What you did, and what you saw instead.
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: What you expected
+      label: What you expected / 期望的结果
     validations:
       required: false
+  - type: markdown
+    attributes:
+      value: |
+        ## Your game and PC / 游戏与电脑
+        Answers marked "filled in by the app" are there already; fix them if they are wrong. / 标注“由应用填写”的项已自动填好，如有错误请修改。
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version / Windows 版本
+      description: Filled in by the app (build 22000 and up is Windows 11, below is 10). By hand, press Win+R and run winver.
+      placeholder: "win32 x64 (10.0.22631)"
+  - type: dropdown
+    id: game-source
+    attributes:
+      label: Where did you get the game? / 游戏从哪里获取？
+      description: Filled in by the app when it found the game log.
+      options:
+        - Steam
+        - Official launcher / 官方启动器
+        - TapTap / Chinese publisher / TapTap 或国内发行商
+        - Other regional publisher / 其他地区发行商
+        - Don't know / 不知道
+  - type: input
+    id: game-source-which
+    attributes:
+      label: Which one? / 具体是哪个？
+      description: For a publisher or regional version, its name (for example TapTap, Garena, Tencent).
+  - type: input
+    id: game-language
+    attributes:
+      label: Game language / 游戏语言
+      description: The language set in the game (for example English, 简体中文, 한국어).
+  - type: input
+    id: game-process
+    attributes:
+      label: Game process name / 游戏进程名
+      description: Filled in by the app. By hand: Task Manager → Details tab, the .exe of the game.
+      placeholder: "Torchlight Infinite.exe"
+  - type: input
+    id: game-window-title
+    attributes:
+      label: Game window title / 游戏窗口标题
+      description: Filled in by the app. By hand: the text on the game's taskbar button.
+  - type: dropdown
+    id: display-mode
+    attributes:
+      label: Display mode / 显示模式
+      description: The app fills in only "Exclusive fullscreen"; for the rest, look in the game's graphics settings.
+      options:
+        - Exclusive fullscreen / 独占全屏
+        - Borderless or fullscreen windowed / 无边框或全屏窗口化
+        - Windowed / 窗口化
+        - Don't know / 不知道
+  - type: input
+    id: game-window-size
+    attributes:
+      label: Resolution / 分辨率
+      description: Filled in by the app (the game window's size). By hand: the game's graphics settings.
+      placeholder: "1920x1080"
+  - type: input
+    id: run-as-admin
+    attributes:
+      label: Run as administrator? / 是否以管理员运行？
+      description: Filled in by the app (yes or no, for the app and for the game). If they differ, the rings and screen reading can fail. By hand: right-click the exe, Properties, Compatibility.
+      placeholder: "app: no, game: no"
+  - type: dropdown
+    id: pc-type
+    attributes:
+      label: Where do you play? / 在哪里游玩？
+      description: Filled in by the app when it can tell.
+      options:
+        - This PC directly / 直接在本机
+        - Remote desktop / 远程桌面
+        - Cloud PC or virtual machine / 云电脑或虚拟机
+  - type: input
+    id: antivirus
+    attributes:
+      label: Antivirus or policy blocking things? / 杀毒软件或策略是否拦截？
+      description: Name of your antivirus, and whether it blocks PowerShell or the app. Leave empty if you have none.
+  - type: textarea
+    id: features
+    attributes:
+      label: What is switched on / 已开启的功能
+      description: Filled in by the app (the tracker's state and which features are on; no names or paths).
+      render: text
   - type: textarea
     id: diagnostics
     attributes:
-      label: Diagnostics report
-      description: Settings → About → Diagnostics → Copy report. Filled in by Report a bug (cut if it was long: paste the rest from Copy report).
+      label: Diagnostics report / 诊断报告
+      description: Filled in by Report a bug (cut if it was long: paste the rest from Settings → About → Diagnostics → Copy report).
       render: text
-    validations:
-      required: false
   - type: textarea
     id: frames
     attributes:
-      label: Screenshots or frames (optional)
-      description: For a screen-reading problem, drag the saved frame (Save frame in the advisor) or a screenshot of the game here. A frame may show your screen: crop out anything private.
-    validations:
-      required: false
+      label: Screenshots or frames (optional) / 截图（可选）
+      description: For a screen-reading problem, drag the saved frame (Save frame in the advisor) or a screenshot of the game here, and wait for the upload to finish. A frame may show your screen: crop out anything private.
