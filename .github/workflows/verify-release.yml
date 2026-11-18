@@ -1,0 +1,84 @@
+name: Verify public release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag to verify
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # No checkout, third-party actions, tokens, or secrets are needed.
+      - name: Verify executable
+        shell: python3 {0}
+        run: |
+          import hashlib
+          import json
+          import os
+          import re
+          import sys
+          import urllib.parse
+          import urllib.request
+
+          tag, size, digest, result = "-", 0, "-", "FAIL"
+          try:
+              with open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8") as stream:
+                  event = json.load(stream)
+              candidate = (event.get("release", {}).get("tag_name")
+                           if os.environ["GITHUB_EVENT_NAME"] == "release"
+                           else event.get("inputs", {}).get("tag"))
+              # Keep untrusted event/notes values out of shell and log commands.
+              if not isinstance(candidate, str) or not re.fullmatch(
+                      r"v[0-9]+\.[0-9]+\.[0-9]+(?:[-+][A-Za-z0-9.-]+)?", candidate):
+                  raise ValueError()
+              tag = candidate
+              repo = "SheF1k/tli-toolkit-releases"
+              endpoint = "https://api.github.com/repos/" + repo + "/releases/tags/"
+              request = urllib.request.Request(
+                  endpoint + urllib.parse.quote(tag, safe=""),
+                  headers={"Accept": "application/vnd.github+json",
+                           "User-Agent": "tli-public-release-verifier",
+                           "X-GitHub-Api-Version": "2022-11-28"})
+              with urllib.request.urlopen(request, timeout=60) as response:
+                  release = json.load(response)
+              if release.get("tag_name") != tag or release.get("draft") is not False:
+                  raise ValueError()
+              assets = [a for a in release.get("assets", [])
+                        if a.get("name", "").lower().endswith(".exe")]
+              if len(assets) != 1:
+                  raise ValueError()
+              asset = assets[0]
+              name = "TLI-Toolkit-" + tag[1:] + ".exe"
+              if asset.get("name") != name or asset.get("state") != "uploaded":
+                  raise ValueError()
+              expected = re.findall(
+                  r"(?m)^SHA-256 of `" + re.escape(name)
+                  + r"`: `([0-9a-fA-F]{64})`[ \t]*\r?$", release.get("body") or "")
+              if len(expected) != 1:
+                  raise ValueError()
+              url = "https://github.com/" + repo + "/releases/download/" + tag + "/" + name
+              if asset.get("browser_download_url") != url:
+                  raise ValueError()
+              hasher = hashlib.sha256()
+              with urllib.request.urlopen(url, timeout=60) as response:
+                  while chunk := response.read(1024 * 1024):
+                      size += len(chunk)
+                      hasher.update(chunk)
+              digest = hasher.hexdigest()
+              if size > 0 and size == asset.get("size") and digest == expected[0].lower():
+                  result = "PASS"
+          except Exception:
+              # No exception text, URLs, release notes, or metadata enter public logs.
+              pass
+          print(json.dumps({"tag": tag, "size": size, "hash": digest, "result": result}))
+          sys.exit(0 if result == "PASS" else 1)
