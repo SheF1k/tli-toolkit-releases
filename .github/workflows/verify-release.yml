@@ -10,8 +10,7 @@ on:
         required: true
         type: string
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   verify:
@@ -80,5 +79,7 @@ jobs:
           except Exception:
               # No exception text, URLs, release notes, or metadata enter public logs.
               pass
-          print(json.dumps({"tag": tag, "size": size, "hash": digest, "result": result}))
+          reason = "ok" if result == "PASS" else "verification_failed"
+          print(json.dumps({"tag": tag, "size": size, "hash": digest,
+                            "result": result, "reason": reason}))
           sys.exit(0 if result == "PASS" else 1)
